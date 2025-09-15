@@ -4,14 +4,18 @@ let octText = document.getElementById('octText')
 let hexaText = document.getElementById('hexaText')
 
 decimalText.addEventListener('input', () => {
-    if (event.key === '.' || event.key === ',') {
-        decimalText.value = input.value.slice(0, -1);
+    if (decimalText.value === "") {
+        binText.value = null
+        octText.value = null
+        hexaText.value = null
     }
-    let valorDecimal = decimalText.value
+    else {
+        let valorDecimal = decimalText.value
+        converterBinario(valorDecimal)
+        converterOctal(valorDecimal)
+        converterHexadecimal(valorDecimal)
+    }
 
-    converterBinario(valorDecimal)
-    converterOctal(valorDecimal)
-    converterHexadecimal(valorDecimal)
 });
 
 function converterBinario(decimal) {
@@ -89,7 +93,7 @@ function converterHexadecimal(decimal) {
             }
             decimal = Math.trunc(decimal / 16)
         }
-        hexaText.value = sinal+hexadecimal
+        hexaText.value = sinal + hexadecimal
     }
 
 }
